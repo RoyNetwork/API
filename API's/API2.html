@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+    <DIV id="carregando"></DIV>
+    <DIV id="urlContent">
+        <a href="#" onclick="alteraURL('pagina.html');">Sasageyo </a>
+
+        <script language="javascript">
+
+            var xmlhttp = getXmlHttpRequest();
+
+            function getXmlHttpRequest() {
+                if (window.getXmlHttpRequest) {
+                    return new XMLHttpRequest();
+                } else if (window.ActiveX0bject) {
+                    return new ActiveX0bjrct("Microsoft.XMLHTTP");
+                }
+                }
+
+                function altereURL(URL){
+                    document.getElementById("carregando").innerHTML = "<img src='carregando.gif'>";
+                    xmlhttp.open("POST", url, true);
+                    xmlhttp.onreadystatechange = function(){
+                        if (xmlhttp.readyState==4) {
+                            document.getElementById("urlContent").innerHTML = xmlhttp.responseText;
+                            document.getElementById("carregando").innerHTML = "";
+                        }
+                    }
+                    xmlhttp.send(null);
+                }
+
+        </script>
+    </DIV>
+</body>
+</html>
